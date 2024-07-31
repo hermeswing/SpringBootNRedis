@@ -15,7 +15,7 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 
 @Configuration
-@EnableCaching
+@EnableCaching  // 어노테이션을 통해 캐싱 기능 사용 등록
 public class RedisConfig {
 
     @Value( "${spring.redis.host}" )

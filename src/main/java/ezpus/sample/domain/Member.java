@@ -11,7 +11,9 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Entity
 @NoArgsConstructor
 @Getter // getter를 자동으로 생성합니다.
@@ -33,6 +35,7 @@ public class Member {
     }
 
     public void updateMember( Map<String, Object> param ) {
+        log.info( "[updateMember] param :: {}", param );
         this.name = (String) param.get( "name" );
     }
 }

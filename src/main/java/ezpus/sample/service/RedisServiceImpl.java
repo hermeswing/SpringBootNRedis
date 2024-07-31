@@ -44,10 +44,10 @@ public class RedisServiceImpl implements RedisService {
         }
 
         Optional<Member> member     = redisRepository.findById( id );
-        Member           saveMember = member.get();
-        saveMember.updateMember( param );
+        Member           updateMember = member.get();
+        updateMember.updateMember( param );
 
-        return redisRepository.save( saveMember );
+        return redisRepository.save( updateMember );
     }
 
     @Override
