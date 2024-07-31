@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: SpringBootNRedis
+    
+  datasource:
+    url: jdbc:postgresql://localhost:5432/springboot
+    username: hermeswing
+    password: pass
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      pool-name: BaseHikariPool
+        
+  jpa:
+    generate-ddl: true
+    hibernate:
+      # create : entity를 drop cascade 하고 다시 생성
+      # update : entity가 수정되면 수정된 내용만 반영
+      # create-drop,validate, none
+      # 하이버네이트가 자동으로 생성해주는 DDL은 신뢰성이 떨어지기 때문에 
+      # 절대로! 운영DB 환경에서 그대로 사용하면 안되고, 직접 DDL을 작성하는 것을 권장
+      ddl-auto: none         # Hibernate ddl auto (create, create-drop, validate, update)
+    #show-sql: false            # System.out 으로 출력. logging.level.org.hibernate.SQL=debug 로 대체합니다. 
+    #properties:
+    #  hibernatte:
+    #    format_sql: true
+        
+  cache:
+    type: redis  
+  redis:
+    host: localhost
+    port: 6379
+
+server:
+  port: 9090
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+      
+logging:
+  level:
+    root : info
+    octopus: debug
+    org.springframework: WARN
+    org.hibernate.SQL: debug                    # logger를 통해 하이버네이트 실행 SQL
+    org.hibernate.type.descriptor.sql: trace    # sql의 ? 값을 Parameter로 보여줌.
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            SQL: trace
